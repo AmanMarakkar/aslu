@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --color-ink: #050506;
+  --color-charcoal: #0b0b10;
+  --color-charcoal-soft: #121218;
+  --color-violet: #7c5cff;
+  --color-violet-soft: #a78bfa;
+  --color-azure: #4f7cff;
+  --color-mist: #c9c9d6;
+  --color-mist-dim: #8b8b9a;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: #f4f4f7;
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  scrollbar-color: #2a2a35 transparent;
+}
+
+::selection {
+  background: rgba(124, 92, 255, 0.35);
+  color: #ffffff;
+}
+
+.bg-grain {
+  background-image: radial-gradient(circle at 20% 20%, rgba(124, 92, 255, 0.12), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(79, 124, 255, 0.1), transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(124, 92, 255, 0.08), transparent 50%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 10%, #c9c9ff 60%, #8b8bff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-ring {
+  box-shadow: 0 0 0 1px rgba(124, 92, 255, 0.25), 0 0 60px -10px rgba(124, 92, 255, 0.45),
+    0 0 120px -20px rgba(79, 124, 255, 0.35);
+}
+
+.card-glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+input, textarea, select {
+  color-scheme: dark;
+}
+
+@layer components {
+  .field {
+    @apply w-full rounded-lg border border-white/10 bg-ink px-4 py-2.5 text-white placeholder:text-mist-dim focus:border-violet-soft focus:outline-none;
+  }
+
+  .field-file {
+    @apply block w-full text-sm text-mist file:mr-4 file:rounded-full file:border-0 file:bg-white/10 file:px-4 file:py-2 file:text-sm file:text-white hover:file:bg-white/20;
+  }
+}
